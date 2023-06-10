@@ -82,12 +82,9 @@ ${JSON.stringify(action.options)}
 ] }`;
           commandsUp.push(res);
 
-          const nameOrAttrs =
-            action.options &&
-            action.options.indexName &&
-            action.options.indexName !== ""
-              ? `"${action.options.indexName}"`
-              : JSON.stringify(action.fields);
+          const nameOrAttrs = action?.options?.name || action?.options?.indexName
+            ? `"${action?.options?.name ?? action?.options?.indexName}"`
+            : JSON.stringify(action.fields);
 
           consoleOut.push(
             `addIndex ${nameOrAttrs} to table "${action.tableName}"`
@@ -96,12 +93,9 @@ ${JSON.stringify(action.options)}
         break;
 
       case "removeIndex": {
-        const nameOrAttrs =
-          action.options &&
-          action.options.indexName &&
-          action.options.indexName !== ""
-            ? `"${action.options.indexName}"`
-            : JSON.stringify(action.fields);
+        const nameOrAttrs = action?.options?.name || action?.options?.indexName
+          ? `"${action?.options?.name ?? action?.options?.indexName}"`
+          : JSON.stringify(action.fields)
         const res = `{ fn: "removeIndex", params: [
           "${action.tableName}",
           ${nameOrAttrs}

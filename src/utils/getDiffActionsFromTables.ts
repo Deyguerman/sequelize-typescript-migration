@@ -115,9 +115,14 @@ export default function getDiffActionsFromTables(
           // new index
           if (df.path[1] === "indexes" && df.rhs) {
             const tableName = df.path[0];
-            const copied = df.rhs
+            let copied = df.rhs
               ? JSON.parse(JSON.stringify(df.rhs))
               : undefined;
+
+            if (typeof copied === 'string') {
+              copied = JSON.parse(JSON.stringify(currentStateTables[df.path[0]].indexes[df.path[2]]))
+            }
+
             const index = copied;
 
             index.actionType = "addIndex";
@@ -181,14 +186,18 @@ export default function getDiffActionsFromTables(
           }
 
           if (df.path[1] === "indexes" && df.lhs) {
+            let previousIndex: {[key: string]: string} = {}
+            if (typeof df.lhs === 'string') {
+                previousIndex = JSON.parse(JSON.stringify(previousStateTables[df.path[0]].indexes[df.path[2]]))
+            }
+
             actions.push({
-              actionType: "removeIndex",
-              tableName,
-              fields: df.lhs.fields,
-              options: df.lhs.options,
-              depends: [tableName],
+                actionType: "removeIndex",
+                tableName,
+                fields: df.lhs.fields ?? previousIndex.fields,
+                options: df.lhs.options ?? previousIndex.options,
+                depends: [tableName],
             });
-            break;
           }
         }
         break;
