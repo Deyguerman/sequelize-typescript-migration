@@ -271,6 +271,3 @@ Will be ready soon!
 ## Contributors
 
 - [Deyguerman](https://github.com/Deyguerman)
-- [MohammadMojtaba Roshani](https://github.com/mmRoshani)
-- [Anthony Luzquiños](https://github.com/anthonylzq)
-- [Alexandr Cherednichenko](https://github.com/alexandr2110pro)
