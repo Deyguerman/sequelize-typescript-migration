@@ -21,7 +21,7 @@ npm i sequelize-typescript-migration-lts
 yarn add sequelize-typescript-migration-lts
 ```
 
-Thanks kimjbstar, mricharz, syon-development, viinzzz and lou2013 for the awesome lib.
+Thanks kimjbstar, mricharz, syon-development, viinzzz, lou2013 and mmRoshani for the awesome lib.
 
 ## General info
 
@@ -270,6 +270,7 @@ Will be ready soon!
 
 ## Contributors
 
+- [Deyguerman](https://github.com/Deyguerman)
 - [MohammadMojtaba Roshani](https://github.com/mmRoshani)
 - [Anthony Luzquiños](https://github.com/anthonylzq)
 - [Alexandr Cherednichenko](https://github.com/alexandr2110pro)
